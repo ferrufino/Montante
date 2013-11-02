@@ -181,9 +181,7 @@ bool check=false;
     else if(despl) {
     
         respuesta();
-    }
-        
-    
+    }    
     
 }
 void validarMultiplo(){
@@ -211,7 +209,6 @@ void validarMultiplo(){
         
         montante();
     }
-   
 
 
 }
