@@ -186,13 +186,35 @@ bool check=false;
 }
 void validarMultiplo(){
     int temp=0;
+    int a,b;
     bool same = true;
     while (temp<n) {
      
         for (int i =0; i<n+1; i++) {
-            if ((matriz[i][temp]) != matriz[i+1][temp] ) {
-                same=false;
+            a=matriz[i][temp];
+            b=matriz[i+1][temp];
+           // cout<<"DEBUG:: a: "<<a<<" y b: "<<b<<endl;
+            if ( (b == 0 && a == 1) || ( b == 1 && a== 0) ) {
+                same = false;
+                break;
             }
+            else if ((matriz[i][temp]) > matriz[i+1][temp] ) {
+                if(!(a % b) || !(a != b)){
+                    same=false;
+                    break;
+                
+                }
+                else{
+                    if(!(b % a) || !(a != b)){
+                        same=false;
+                        break;
+                        
+                    }
+                }
+                    
+            }
+            
+            
         }
         temp++;
     }
