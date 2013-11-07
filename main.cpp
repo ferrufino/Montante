@@ -17,6 +17,7 @@ int arr[100];
 int pivAct;
 int pivAnt=1;
 bool despl = true;
+bool ckeck= true;
 void desplegar(){
     
     for (int i = 0; i < n; i++) {
@@ -157,6 +158,7 @@ bool check=false;
             cout<<"NO UNICA"<<endl;
             pivAnt=1;
             despl=false;
+            check = false;
             break;
         }
         else{
@@ -173,7 +175,7 @@ bool check=false;
         
     }
     
-    if (matriz[n-1][n-1] == 0) {
+    if (matriz[n-1][n-1] == 0 && check)  {
         cout<<"NO UNICA"<<endl;
         despl=false;
     
@@ -181,20 +183,21 @@ bool check=false;
     else if(despl) {
     
         respuesta();
-    }    
+    }
+    check = true;
     
 }
 void validarMultiplo(){
     int temp=0;
     int a,b;
-    bool same = true;
+    bool same = false;
     while (temp<n) {
      
-        for (int i =0; i<n+1; i++) {
+      /*  for (int i =0; i<n+1; i++) {
             a=matriz[i][temp];
             b=matriz[i+1][temp];
            // cout<<"DEBUG:: a: "<<a<<" y b: "<<b<<endl;
-            if ( (b == 0 && a == 1) || ( b == 1 && a== 0) ) {
+          /*  if ( (b == 0 && a == 1) || ( b == 1 && a== 0) ) {
                 same = false;
                 break;
             }
@@ -215,12 +218,12 @@ void validarMultiplo(){
             }
             
             
-        }
+        } */
         temp++;
     }
     if (same) {
         //desplegar();
-        cout<<"NO UNICA"<<endl;
+        cout<<"NO UNICA 3"<<endl;
         pivAnt=1;
 
         despl=false;
