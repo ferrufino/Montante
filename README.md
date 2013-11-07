@@ -1,7 +1,7 @@
 Para correrlo.-
 ///
-Primero introduce cuantas ecuaciones han de haber. (n).
+Primero introduce el numero de ecuaciones que existiran. (n)
 ///
-Luego la matriz (considera que mas la respuesta lo volveria un n+1 de tamaño las columnas). 
+Luego introduce la matriz (considera que mas la respuesta lo volveria un (n+1) el tamaño de las columnas). 
 ///
 Presiona 0 si quieres salir.
