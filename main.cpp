@@ -189,7 +189,7 @@ void validarMultiplo(){
          a=matriz[i][temp];
          b=matriz[i+1][temp];
          // cout<<"DEBUG:: a: "<<a<<" y b: "<<b<<endl;
-         /*  if ( (b == 0 && a == 1) || ( b == 1 && a== 0) ) {
+          if ( (b == 0 && a == 1) || ( b == 1 && a== 0) ) {
          same = false;
          break;
          }
