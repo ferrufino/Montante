@@ -3,15 +3,16 @@ using namespace std;
 
 
 int matriz[100][100];
-int n;
+int static n=0;
 int x;
 int arr[100];
 int pivAct;
 int pivAnt=1;
 bool despl = true;
 bool ckeck= true;
+
 void desplegar(){
-    
+  
     for (int i = 0; i < n; i++) {
         for (int j = 0; j< n+1; j++) {
             cout<<matriz[i][j]<<" ";
@@ -22,9 +23,9 @@ void desplegar(){
 }
 void cambiarRenglon(int temp, int a){
     
-    int arr[10];
-    
-    for (int i =0; i<n+1; i++) {
+    int arr[100];
+    int var=n;
+    for (int i =0; i<var+1; i++) {
         
         arr[i] = matriz[a][i];
         
@@ -33,6 +34,7 @@ void cambiarRenglon(int temp, int a){
         matriz[temp][i] = arr[i];
     }
     pivAct= matriz[a][a];
+   
     //desplegar();
 }
 
@@ -136,7 +138,9 @@ void montante(){
             while (x<n && check == false) {
                 if (matriz[x][p] !=0) {
                     cambiarRenglon(x,p);
-                    check = true;
+                        check = true;
+                   
+                    
                     
                     
                 }
@@ -183,9 +187,9 @@ void validarMultiplo(){
     int temp=0;
     int a,b;
     bool same = false;
-    while (temp<n) {
+      while (temp<n) {
         
-        /*  for (int i =0; i<n+1; i++) {
+        for (int i =0; i<n+1; i++) {
          a=matriz[i][temp];
          b=matriz[i+1][temp];
          // cout<<"DEBUG:: a: "<<a<<" y b: "<<b<<endl;
@@ -210,7 +214,7 @@ void validarMultiplo(){
          }
          
          
-         } */
+         }
         temp++;
     }
     if (same) {
@@ -220,12 +224,14 @@ void validarMultiplo(){
         
         despl=false;
     }
+      
     else{
         //desplegar();
         //cout<<"DEBUG:: No contiene ecuaciones que son multiples"<<endl;
-        
-        montante();
     }
+      
+        montante();
+    
     
     
 }
@@ -251,18 +257,28 @@ void vaciar(){//vacia y despliega datos
 void validacionMontante(){
     
     pivAct = matriz[0][0];
-    int pos = 0;
+    //int pos = 0;
     if (pivAct == 0) {
-        int temp = 0;
+        int renglon = 0;
         bool cambio= false;
         // cout<<"DEBUG::PRIMER Pivote = 0"<<endl;
-        while (temp<n || cambio == false) {
-            if (matriz[temp][pos] != 0) {
-                cambio = true;
-                cambiarRenglon(temp, 0);
-                break;
+        while (renglon<n && cambio == false) {
+            if (matriz[renglon][0] != 0) {
+               
+                cout<<"Pivote actual:"<<pivAct<<endl;
+                cambiarRenglon(renglon, 0);
+                cout<<"Pivote actual:"<<pivAct<<endl;
+                
+                if (pivAct != 0) {
+                    cambio = true;
+                    cout<<"Pivote actual:"<<pivAct<<endl;
+                    break;
+                }
+                
+                
+                
             }
-            temp++;
+            renglon++;
         }
         if (!cambio){
             //desplegar();
@@ -273,14 +289,16 @@ void validacionMontante(){
         }
         else{
             //desplegar();
-            //cout<<"DEBUG:: valida- son multiplos? v.1"<<endl;
-            validarMultiplo();
+            cout<<"DEBUG:: valida- son multiplos? v.1"<<endl;
+           // validarMultiplo();
+            montante();
         }
         
     }
     else{
         //cout<<"DEBUG:: valida- son multiplos? v.2"<<endl;
-        validarMultiplo();
+        //validarMultiplo();
+        montante();
     }
     
 }
